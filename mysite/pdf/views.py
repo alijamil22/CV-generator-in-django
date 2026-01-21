@@ -15,3 +15,6 @@ def accept(request):
         profile = Profile(name=name,email=email,phone=phone,degree=degree,school=school,university=university,summary=summary,skills=skills,previous_work=previous_work)
         profile.save()
     return render(request,'pdf/accept.html')
+def resume(request,id):
+    user_profile = Profile.objects.get(pk=id)
+    return render(request,"pdf/resume.html",{"user_profile":user_profile})

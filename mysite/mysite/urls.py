@@ -20,4 +20,5 @@ from pdf import views
 urlpatterns = [
     path('',views.accept,name='accept'),
     path('admin/', admin.site.urls),
+    path('<int:id>',views.resume,name='resume'),
 ]
