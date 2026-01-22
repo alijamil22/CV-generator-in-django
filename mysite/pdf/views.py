@@ -3,6 +3,7 @@ from .models import Profile
 import pdfkit
 from django.template import loader
 from django.http import HttpResponse
+from django.views.generic import ListView
 # Create your views here.
 def accept(request):
     if request.method == "POST":
@@ -31,3 +32,8 @@ def resume(request,id):
     response['Content-Disposition']='attachment;filename = "resume.pdf"'
     
     return response
+class List_Profiles(ListView):
+    model = Profile
+    template_name = 'pdf/list_profiles.html'
+    context_object_name = 'all_profiles'
+    
